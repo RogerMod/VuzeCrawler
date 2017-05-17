@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Timeline | Basic demo</title>
+
+        <style type="text/css">
+            body, html {
+                font-family: sans-serif;
+            }
+        </style>
+
+        <script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/58E31BFD-D19F-9844-980C-72A7EE9E1218/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://ff.kis.v2.scr.kaspersky-labs.com/8121E9EE7A27-C089-4489-F91D-DFB13E85/abn/main.css"/><script src="http://visjs.org/dist/vis.js"></script>
+
+        <link href="http://visjs.org/dist/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+        <h2>
+            Vuze Crawler
+        </h2>
+
+        <input type="button" class="button" value="Zoom In" onclick=zoomPlus()>
+        <input type="button" class="button" value="Zoom Out" onclick=zoomMinus()>
+        <input type="button" class="button" value="focus3" onclick=focus3()>
+        <form>
+            <span>Tipo de mensaje<select id="message_type">
+                    <option name="type" value="PING">PING</option>
+                    <option name="type" value="FIND_NODE">FIND NODE</option>
+                    <option name="type" value="FIND_VALUE">FIND VALUE</option>
+                </select>
+            </span>
+            <span>Fecha
+                <input type="text" name="date">
+            </span>
+        </form>
+        <input type="button" class="button" value="Add" onclick=formSubmit()>
+        <input type="button" class="button" value="Clear" onclick=clearAll()>
+
+        <div id="visualization"></div>
+        <div id="graphs"></div>
+
+        <script src="functions.js"></script>
+
+        <div id="heded">
+        </div>
+        
+    </body>
+</html>
