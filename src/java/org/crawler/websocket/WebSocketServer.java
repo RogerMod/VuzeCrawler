@@ -34,16 +34,16 @@ public class WebSocketServer {
         sessionHandler.addSession(session);
         if (init != true) {
             try {
-                SQLiteTest test = new SQLiteTest();
+                SQLiteDatabase test = new SQLiteDatabase();
                 test.getConnection();
                 System.out.println("Conexion con DB");
                 /*
                 HebraCoord hebra1 = new HebraCoord();
                 hebra1.start();
-                
+                */
                 hebra2 = new HebraMsg(session);
                 hebra2.start();
-                */
+                
             } catch (SQLException | ClassNotFoundException e) {
                 System.out.println("Algo malo pasa");
             }

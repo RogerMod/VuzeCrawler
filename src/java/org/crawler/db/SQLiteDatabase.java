@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SQLiteTest {
+public class SQLiteDatabase {
 
     private static Connection con;
     //private static boolean hasData = false;
@@ -65,7 +65,7 @@ public class SQLiteTest {
     public void getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         con = DriverManager.getConnection("jdbc:sqlite:C:/Users/usuario/"
-                + "Desktop/netbeaaaans/VuzeCrawler/SQLiteTest1.db");
+                + "Desktop/netbeaaaans/VuzeCrawler/VuzeDatabase.db");
         initialize();
 
     }

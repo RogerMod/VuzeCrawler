@@ -27,7 +27,7 @@ public class HebraCoord extends Thread{
 
      public void run(){
          
-        SQLiteTest test = new SQLiteTest();
+        SQLiteDatabase test = new SQLiteDatabase();
         FileInputStream fis = null;
         InputStreamReader isr = null;
         BufferedReader br = null;

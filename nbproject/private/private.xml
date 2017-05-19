@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/src/java/org/crawler/db/SQLiteTest.java</file>
             <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/src/java/org/crawler/model/VuzeMsg.java</file>
             <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/src/java/org/crawler/db/HebraMsg.java</file>
             <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/web/functions.js</file>
             <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/src/java/org/crawler/websocket/WebSocketServer.java</file>
             <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/src/java/org/crawler/websocket/SessionHandler.java</file>
             <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/web/index.html</file>
+            <file>file:/C:/Users/usuario/Desktop/netbeaaaans/VuzeCrawler/src/java/org/crawler/db/SQLiteDatabase.java</file>
         </group>
     </open-files>
 </project-private>

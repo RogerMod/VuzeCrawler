@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.json.JsonObject;
 import javax.json.spi.JsonProvider;
 import javax.websocket.Session;
-import org.crawler.db.SQLiteTest;
+import org.crawler.db.SQLiteDatabase;
 
 import org.crawler.model.VuzeMsg;
 
@@ -50,7 +50,7 @@ public class SessionHandler {
 
     public void retrieveInfo(String type) throws SQLException {
 
-        SQLiteTest test = new SQLiteTest();
+        SQLiteDatabase test = new SQLiteDatabase();
         ResultSet rs = null;
 
         switch (type) {

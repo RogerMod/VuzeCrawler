@@ -32,10 +32,15 @@ public class HebraMsg extends Thread {
     @Override
     public void run() {
 
-        SQLiteTest test = new SQLiteTest();
+        SQLiteDatabase test = new SQLiteDatabase();
         FileInputStream fis = null;
         InputStreamReader isr = null;
         BufferedReader br = null;
+        
+        String minute_new;
+        String minute_mem ="06";
+        String temp = "2017-05-17T19:06:00";
+        int counter=0;
 
         try {
             ArrayList<VuzeMsg> coord = new ArrayList<VuzeMsg>();
@@ -51,8 +56,20 @@ public class HebraMsg extends Thread {
                 } else {
                     strcoord = strLine.split(",");
                     coord.add(new VuzeMsg(0, strcoord[0], strcoord[1], strcoord[2]));
-                    test.addMessages(coord.get(0).type, coord.get(0).timestamp, coord.get(0).data);
+                    //test.addMessages(coord.get(0).type, coord.get(0).timestamp, coord.get(0).data);
                     //addVuzeMessage(new VuzeMsg(0, strcoord[0], strcoord[1], strcoord[2]),ses);
+                    //addGraphMessage("2017-05-12T13:" + minute + ":00",10,ses);
+                    minute_new = strcoord[1];
+                    minute_new = minute_new.substring(14, 16);
+                    if(!minute_new.equals(minute_mem)){
+                        addGraphMessage(temp.substring(0,14)+minute_mem+":00",counter,0,ses);
+                        //System.out.println(temp.substring(0,14) + minute_mem + ":00 ---> "+ counter );
+                        counter = 0;
+                        temp = strcoord[1];
+                        minute_mem = minute_new;
+                    }
+                    counter++;
+                    //System.out.println("Minuto:" + minute.substring(14, 16));
                     coord.clear();
                 }
             }
@@ -67,6 +84,11 @@ public class HebraMsg extends Thread {
         JsonObject addMessage = createAddMessage(msg);
         sendToSession(sesion, addMessage);
     }
+    
+    public void addGraphMessage(String x, int y, int group, Session sesion) {
+        JsonObject graphMessage = createGraphMessage(x,y,group);
+        sendToSession(sesion, graphMessage);
+    }
 
     private JsonObject createAddMessage(VuzeMsg msg) {
         JsonProvider provider = JsonProvider.provider();
@@ -76,6 +98,17 @@ public class HebraMsg extends Thread {
                 .add("type", msg.getType())
                 .add("timestamp", msg.getTimestamp())
                 .add("data", msg.getData())
+                .build();
+        return addMessage;
+    }
+    
+        private JsonObject createGraphMessage(String x, int y, int group) {
+        JsonProvider provider = JsonProvider.provider();
+        JsonObject addMessage = provider.createObjectBuilder()
+                .add("action", "graph")
+                .add("x", x)
+                .add("y", y)
+                .add("group", group)
                 .build();
         return addMessage;
     }
