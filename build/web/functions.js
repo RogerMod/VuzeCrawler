@@ -1,4 +1,4 @@
-var socket = new WebSocket("ws://localhost:8080/VuzeCrawler/actions");
+var socket = new WebSocket("ws://localhost:8080/Crawleer/actions");
 socket.onmessage = onMessage;
 
 // DOM element where the Timeline will be attached
@@ -9,67 +9,70 @@ var container4graphs = document.getElementById('graphs');
 var items = new vis.DataSet([
 ]);
 var names = ['Messages', 'Pings', 'Find Node', 'Find Value'];
-var items2graphs = [
-];
-var dataset = new vis.DataSet(items2graphs);
+var items2graphs = new vis.DataSet();
 var groups = new vis.DataSet();
+
 groups.add({
     id: 0,
     content: names[0],
     options: {
-        style: 'square'
-    }});
+        drawPoints: {
+            style: 'circle'
+        }
+    }
+});
 groups.add({
     id: 1,
     content: names[1],
     options: {
-        style: 'square'
-    }});
+        drawPoints: {
+            style: 'circle'
+        }
+    }
+});
 
 groups.add({
     id: 2,
     content: names[2],
     options: {
-        style: 'square'
-    }});
+        drawPoints: {
+            style: 'circle'
+        }
+    }
+});
 
 
 groups.add({
     id: 3,
     content: names[3],
     options: {
-        style: 'square'
-    }});
-
+        drawPoints: {
+            style: 'circle'
+        }
+    }
+});
 
 var options = {dataAttributes: ['tooltip', 'id'],
     //autoResize = true
-    start: '2017-05-12T13:45:00',
-    end: '2017-05-12T13:46:00'
+    start: '2017-05-22T16:16:00',
+    end:   '2017-05-22T16:16:30'
 
 };
 var options2 = {
-    //defaultGroup: 'ungrouped',
+    defaultGroup: 'ungrouped',
     legend: true,
-    start: '2017-05-17T19:06:00',
-    end: '2017-05-17T19:07:00'
+    start: '2017-05-22T16:04:00',
+    end:   '2017-05-22T16:05:00'
 };
-
 
 // Create a Timeline
 var timeline = new vis.Timeline(container, items, null, options);
-var graph2d = new vis.Graph2d(container4graphs, dataset, groups, options2);
+var graph2d = new vis.Graph2d(container4graphs, items2graphs, groups, options2);
 
-/*
- timeline.on('select', function (properties) {
- alert('selected items: ' + properties.items[0].content );
- });
- */
 function focus3() {
     var selection = timeline.getSelection();
     alert(selection);
 }
-;
 
 function zoomPlus() {
     timeline.zoomIn(1);
@@ -83,7 +86,6 @@ function onMessage(event) {
     if (device.action === "add")
         addItem(device);
     else if (device.action === "graph") {
-        alert(device.group);
         addGraphItem(device);
     }
 }
@@ -93,7 +95,7 @@ function addItem(element) {
 }
 
 function addGraphItem(element) {
-    dataset.add([{x: element.x, y: element.y, group: element.group}]);
+    items2graphs.add([{x: element.x, y: element.y, group: element.group}]);
 }
 
 function formSubmit() {

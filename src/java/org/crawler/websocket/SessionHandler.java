@@ -15,6 +15,16 @@ import org.crawler.db.SQLiteDatabase;
 
 import org.crawler.model.VuzeMsg;
 
+/*
+
+Gestión de sesiones
+
+----------------------------------------------------------------------------------------------------------
+Descripción:
+
+
+
+ */
 @ApplicationScoped
 public class SessionHandler {
 
@@ -28,7 +38,7 @@ public class SessionHandler {
     public void removeSession(Session session) {
         sessions.remove(session);
     }
-
+    
     public void addMessage(VuzeMsg obj) {
         obj.setId(messgId);
         messgId++;
